@@ -1,0 +1,797 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Raspou, Achou Ganhou! - Raspadinha</title>
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="robots" content="noindex, follow">
+
+<link rel="shortcut icon" href="https://i.imgur.com/l2tsTg0.jpeg" type="image/x-icon"><meta property="og:url" content="https://raspadinha.com.br/"/>
+
+<meta property="og:site_name" content="Promoção imperdível: informe seus dados, acredite em contadores falsos e espere um PIX que nunca chega. Parece absurdo porque é um golpe."/>
+
+<meta property="og:description" content="Ache 3 iguais e ganhe na Hora!"/>
+
+<meta property="og:image" content="https://i.imgur.com/l2tsTg0.jpeg">
+
+<meta property="og:description" content="Consultas Liberadas"/>
+
+<meta name="theme-color" content="#eb4052">	
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Graphik:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+		<script src="ok/jquery.min.js"></script>
+
+		
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+
+
+<style>
+
+    :root {
+
+        --purple: #09433b;
+
+        --dark-purple: #09433b;
+
+        --light-purple: #f3e5ff;
+
+        --light-gray: #09433b;
+
+        --medium-gray: #e0e0e0;
+
+        --dark-gray: #333;
+
+        --text-gray: #555;
+
+        --white: #ffffff;
+
+        --green: #00B67A;
+
+    }
+
+
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+
+        font-family: 'Graphik', 'Inter', sans-serif;
+
+        background-color: #9a0000;
+
+        color: var(--dark-gray);
+
+        line-height: 1.6;
+
+        -webkit-font-smoothing: antialiased;
+
+        overflow-x: hidden;
+
+    }
+
+    .container { max-width: 700px; margin: 0 auto; padding: 0 15px; }
+
+
+
+    header {
+
+        background-color: #9a0000;
+
+        padding: 15px;
+
+        text-align: center;
+
+        position: sticky;
+
+        top: 0;
+
+        z-index: 1000;
+
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+    }
+
+    header .logo { width: 120px; filter: brightness(0) invert(1); }
+
+
+
+    #winners-ticker-container {
+
+        height: 45px;
+
+        max-width: 400px;
+
+        margin: 15px auto 0;
+
+        background-color: rgba(0, 0, 0, 0.15);
+
+        border-radius: 8px;
+
+        overflow: hidden;
+
+        position: relative;
+
+    }
+
+    
+
+    #ticker-list {
+
+        list-style: none;
+
+        position: absolute;
+
+        top: 0;
+
+        left: 0;
+
+        height: 100%;
+
+        display: flex;
+
+        animation: scroll-horizontal linear infinite;
+
+    }
+
+
+
+    .ticker-item {
+
+        display: flex;
+
+        align-items: center;
+
+        height: 45px;
+
+        padding: 0 20px;
+
+        color: var(--white);
+
+        flex-shrink: 0;
+
+    }
+
+    .ticker-item img {
+
+        width: 30px;
+
+        height: 30px;
+
+        border-radius: 50%;
+
+        margin-right: 12px;
+
+        border: 1px solid var(--light-purple);
+
+    }
+
+    .ticker-item p { font-size: 0.9rem; white-space: nowrap; }
+
+    .ticker-item strong { font-weight: 600; margin-right: 5px; color: #f0f0f0; }
+
+
+
+    @keyframes scroll-horizontal {
+
+        0% { transform: translateX(0); }
+
+        100% { transform: translateX(-50%); }
+
+    }
+
+    
+
+    main {
+
+        position: relative; padding-top: 20px; background-color: #9a0000;
+
+        border-top-left-radius: 20px; border-top-right-radius: 20px;
+
+        min-height: calc(100vh - 160px); 
+
+    }
+
+    footer{background-color:#ffff;text-align:center;padding:40px 20px;font-size:.85rem;border-top:1px solid #ddd}footer .logo{width:100px;margin-bottom:15px;filter:brightness(.5)}footer p{margin-bottom:15px;color:#777;line-height:1.5}footer a{color:var(--dark-purple);text-decoration:none;margin:0 10px;font-weight:500}footer a:hover{text-decoration:underline}.content-section{background-color:var(--white);padding:35px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.07);width:100%;transition:transform .5s cubic-bezier(.25,1,.5,1),opacity .5s ease-in-out;position:absolute;top:0;visibility:hidden}.content-section.active{position:relative;transform:translateX(0);opacity:1;visibility:visible}.content-section.exiting-left{transform:translateX(-100%);opacity:0}.content-section.entering-right{transform:translateX(100%)}.section-header h2{text-align:center;color:var(--purple);margin-bottom:10px;font-size:1.8rem;font-weight:700}.section-header p{text-align:center;margin-bottom:30px;color:var(--text-gray);max-width:500px;margin-left:auto;margin-right:auto}@keyframes spin{to{transform:rotate(360deg)}}.main-button{background-color:#ff0000;color:var(--white);padding:16px 30px;width:100%;border:none;border-radius:50px;font-size:1.1rem;font-weight:500;cursor:pointer;transition:background-color .3s,transform .2s;margin-top:20px;display:flex;align-items:center;justify-content:center;gap:10px}.main-button:hover:not(:disabled){transform:translateY(-2px)}.main-button:active:not(:disabled){transform:translateY(-1px) scale(.99)}.main-button:disabled{background-color:var(--dark-purple);cursor:not-allowed;opacity:.8}.main-button .spinner{width:20px;height:20px;border:2px solid rgba(255,255,255,.3);border-top-color:var(--white);border-radius:50%;animation:spin 1s linear infinite}.progress-bar{width:100%;height:8px;background-color:var(--medium-gray);border-radius:4px;margin-bottom:25px;overflow:hidden}.progress-bar-inner{width:0;height:100%;background-color:var(--green);border-radius:4px;transition:width .3s ease-in-out}.question{display:none}.question.active{display:block;animation:fadeIn .4s ease-out}@keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}.question label{font-weight:500;display:block;margin-bottom:18px;font-size:1.15rem;color:var(--dark-gray)}.option{background-color:var(--light-gray);color:#fff;padding:14px 20px;margin-bottom:8px;border-radius:8px;cursor:pointer;transition:all .15s ease-in-out;border:2px solid transparent}.option:hover{background-color:#e8eaf0;transform:translateX(3px)}.option.selected{background-color:var(--light-purple);border-color:var(--purple);font-weight:600;color:var(--dark-purple)}#scratch-container{position:relative;width:100%;max-width:320px;margin:20px auto;-webkit-user-select:none;user-select:none}#scratch-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="%23FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle></svg>') 20 20,auto}#prize-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;z-index:1}.prize-item{width:90px;height:90px;font-size:1.7rem;background-color:var(--light-gray);border-radius:8px;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 1px 3px rgba(0,0,0,.05);font-weight:600;color:#fff;}.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.6);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;z-index:2000;opacity:0;visibility:hidden;transition:all .25s ease-in-out}.modal-overlay.visible{opacity:1;visibility:visible}.modal-content{background-color:var(--white);padding:25px;border-radius:10px;width:90%;max-width:380px;text-align:center;transform:scale(.95) translateY(-10px);transition:transform .3s cubic-bezier(.34,1.1,.64,1)}.modal-overlay.visible .modal-content{transform:scale(1) translateY(0)}.modal-content .icon{font-size:2.5rem;margin-bottom:12px}.modal-content h3{color:var(--dark-purple);font-size:1.6rem;margin-bottom:8px}.modal-content p{color:var(--text-gray);margin-bottom:20px;font-size:.95rem}.form-group{margin-bottom:18px}.form-group label{display:block;margin-bottom:6px;font-weight:500;color:var(--text-gray);font-size:.9rem}.form-group input{width:100%;padding:12px;border:1px solid var(--medium-gray);border-radius:6px;font-size:.95rem;font-family:'Graphik','Inter',sans-serif;transition:all .2s ease-in-out}.form-group input:focus{outline:none;border-color:var(--purple);box-shadow:0 0 0 2px var(--light-purple)}#prize-display{text-align:center;font-size:1.1rem;font-weight:600;color:var(--green);background-color:#e6f7f1;padding:12px;border-radius:6px;margin-bottom:25px}#success-message{display:none;text-align:center;padding:18px;background-color:#e6f7f1;border-radius:8px;font-size:.9rem}#success-message h3{color:var(--green);margin-bottom:6px;font-size:1.4rem}@media (max-width:600px){.content-section{padding:25px 15px}.prize-item{width:auto;height:75px;font-size:1.5rem}#prize-grid{gap:8px}}
+
+	img, video {
+
+max-width: 100%;
+
+height: auto;
+
+}
+
+.info-box {
+
+background-color: #09433b;
+
+color: white;
+
+padding: 5px 10px;
+
+border-radius: 5px;
+
+font-weight: bold;
+
+margin: 10px;
+
+font-size: 15px;
+
+}
+
+.info-box1 {
+
+background-color: #09433b;
+
+color: white;
+
+padding: 5px 10px;
+
+border-radius: 5px;
+
+font-weight: bold;
+
+margin: 10px;
+
+font-size: 15px;
+
+}
+
+</style>
+
+</head><body><script>
+  
+setInterval(function() {
+  
+  // Simula uma chamada de API que retorna o número de usuários atualizado
+  
+  let newUsers = Math.floor(Math.random() * 1000) + 899019;
+  
+
+  
+  // Atualiza o conteúdo do span com o novo número de usuários
+  
+  $("#users").text(newUsers);
+  
+}, 3000);
+  
+
+  
+let saquesPagos = 880458.89;
+  
+setInterval(function() {
+  
+  // Simula uma chamada de API que retorna o valor de saques pagos atualizado
+  
+  let novoValor = (Math.random() * 9000).toFixed(2);
+  
+  saquesPagos += parseFloat(novoValor);
+  
+
+  
+  // Formata o valor para exibir com duas casas decimais e R$ na frente
+  
+  let valorFormatado = saquesPagos.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  
+
+  
+  // Atualiza o conteúdo do elemento com o novo valor formatado
+  
+  document.getElementById("saques-pagos").innerHTML = valorFormatado;
+  
+}, 5000);
+  
+</script><canvas id="confetti-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999;"></canvas>
+
+
+
+<header>
+
+    <img src="https://i.imgur.com/MMdmZxi.png" alt="Nubank Logo" class="logo"><p style="color:#fff;">Últimos ganhadores ao vivo</p>
+
+    <div id="winners-ticker-container">
+
+        <ul id="ticker-list"></ul>
+
+    </div>
+
+	<div class="info-box">🟢 Online agora: <font color=yellow><span id="users">789019</font></span></div>
+
+	<div class="info-box1">🟢 Pagos hoje: <font color=yellow><span id="saques-pagos">R$890.458,45</font></span></div>
+
+</header>
+
+   <div class="hero-image"><img alt="Aviso sobre novas regras do PIX" src="https://i.imgur.com/WwP1Sft.png">
+
+</div>
+
+<main class="container">
+
+    <section id="intro-section" class="content-section active"><div class="section-header" style="margin-top:20px">
+
+	<h2 style="font-size:2.1rem">Cola-Cola é do Brasil!<br>Raspou, Achou, Ganhou!</h2>
+
+	<p style="font-size:1.05rem;margin-top:15px">Você ganhou (1) chance de Raspa e ganhar prêmios incríveis!</p>
+
+	<p style="font-size:1.05rem;margin-top:15px">Os prêmios variam de R$1,00 a R$25.000,00 Reais!</p>
+
+	<p style="font-size:1.05rem;margin-top:15px">Receba seu Prêmio Via PIX e receba imediatamente!</p>
+
+	<p style="font-size:1.05rem;margin-top:15px">Para participar e só aberta o Botão "que que roubem meusdados" abaixo!</p>
+
+	<h2 style="font-size:2.1rem">🟢 Liberado até: <font color=gren><span id="current_date"></font></span></h2></div>
+
+	<button id="start-btn" class="main-button" style="padding:18px;font-size:1.1rem;margin-top:25px"><span>QUERO ser enganado!</span></button>
+
+	</section>
+
+    <section id="quiz-section" class="content-section entering-right"><div class="section-header"><h2>Conte-nos sua opinião</h2><p style="font-size:1rem">Responda 3 perguntas rápidas para avançar.</p></div><div class="progress-bar"><div id="progress-bar-inner" class="progress-bar-inner"></div></div><form id="quiz-form"><div class="question" data-question="1"><label>1. Como você avalia sua experiência geral com a Coca-Cola?</label><div class="option" data-value="a">a) Excelente</div><div class="option" data-value="b">b) Boa</div><div class="option" data-value="c">c) Regular</div><div class="option" data-value="d">d) Ruim</div></div><div class="question" data-question="2"><label>2. Quantos anos você tem?</label><div class="option" data-value="a">a) 14-18</div><div class="option" data-value="b">b) 19-40</div><div class="option" data-value="c">c) 40-50</div><div class="option" data-value="d">d) +51</div></div><div class="question" data-question="3"><label>3. Como você ficou sabendo da nossa promoção?</label><div class="option" data-value="a">a) Instagram</div><div class="option" data-value="b">b) Whatsapp</div><div class="option" data-value="c">c) Facebook</div><div class="option" data-value="d">d) Outro</div></div><button type="button" id="next-question-btn" class="main-button" disabled>Próxima Pergunta</button></form></section>
+
+    <section id="scratch-section" class="content-section entering-right"><div class="section-header"><h2>Raspadinha Liberada!</h2><p style="font-size:1rem">Raspe a área abaixo para revelar seu Prêmio.</p></div><div id="scratch-container"><div id="prize-grid"></div><canvas id="scratch-canvas"></canvas></div></section>
+
+    <section id="form-section" class="content-section entering-right"><div class="section-header"><h2>Último passo!</h2><p style="font-size:1rem">Preencha os dados abaixo para receber seu prêmio.</p></div><div id="prize-display"></div><div class="form-group"><label for="name">Nome Completo</label><input type="text" id="name" name="name" required placeholder="Digite seu nome completo"></div><div class="form-group"><label for="pix-key">Chave PIX (CPF, Celular ou E-mail)</label><input type="text" id="pix-key" name="pix-key" required placeholder="Digite sua chave PIX "></div><a href="granjeia.html"><button type="submit" class="main-button"><span class="button-text">Receber R$690,00</span></button></a><div id="success-message"><h3>PIX Enviado! ✅</h3><p>Seu prêmio de R$690,00 foi enviado e estará na sua conta em alguns instantes. Agradecemos sua participação!</p></div></section>
+
+</main>
+
+
+
+<footer><div class="container"><img src="https://i.imgur.com/MMdmZxi.png" alt="Nubank Logo" class="logo"><p>© Raspadinha</p><p><a href="#">Segurança</a> | <a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p></div></footer>
+
+
+
+<div id="prize-modal" class="modal-overlay"><div class="modal-content"><div class="icon">🎉</div><h3>Parabéns!</h3><p>Você ganhou um PIX de:</p><h2 id="modal-prize-text" style="color:var(--green);margin-bottom:25px;font-size:2.5rem"></h2><button id="modal-claim-btn" class="main-button">Resgatar Prêmio</button></div></div>
+
+							        <script>
+
+    date = new Date();
+
+    year = date.getFullYear();
+
+    month = date.getMonth() + 1;
+
+    day = date.getDate() ;
+
+    document.getElementById("current_date").innerHTML = day + "/" + month + "/" + year;
+
+    </script>
+
+	</div>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const canPlaySound = typeof Howl !== 'undefined';
+
+    const createSound = (src, options = {}) => canPlaySound ? new Howl({ src: [src], ...options }) : { play: () => {}, stop: () => {} };
+
+    const clickSound = createSound("https://assets.mixkit.co/sfx/preview/mixkit-interface-device-click-2577.mp3", { volume: 0.4 });
+
+    const successSound = createSound("https://assets.mixkit.co/sfx/preview/mixkit-positive-interface-click-1107.mp3", { volume: 0.5 });
+
+    const scratchSound = createSound("https://www.myinstants.com/media/sounds/scratchcard.mp3", { volume: 0.5, loop: true });
+
+
+
+    const canMakeConfetti = typeof confetti !== 'undefined';
+
+    let confettiCannon;
+
+    if (canMakeConfetti) {
+
+        const confettiCanvas = document.getElementById('confetti-canvas');
+
+        if(confettiCanvas) confettiCannon = confetti.create(confettiCanvas, { resize: true, useWorker: true });
+
+    }
+
+    
+
+    const sections = { intro: document.getElementById('intro-section'), quiz: document.getElementById('quiz-section'), scratch: document.getElementById('scratch-section'), form: document.getElementById('form-section') };
+
+    const finalPrize = 'R$690';
+
+
+
+    function initializeWinnersTicker() {
+
+        const tickerList = document.getElementById('ticker-list');
+
+        if (!tickerList) return;
+
+        const fakeWinners = [
+
+            { name: '', prize: '', avatar: 'https://i.imgur.com/tCsO8OV.png' },
+
+            { name: '.', prize: '', avatar: 'https://i.imgur.com/tCsO8OV.png' },
+
+            { name: 'Promoção imperdível: informe seus dados, acredite em contadores falsos e espere um PIX que nunca chega. Parece absurdo porque é um golpe..', prize: '', avatar: 'https://i.imgur.com/tCsO8OV.png' },
+
+            { name: '🛑 Não continue ainda. O arquivo pode ser responsável pela próxima etapa.', prize: '', avatar: 'https://i.imgur.com/tCsO8OV.png' },
+
+            { name: '', prize: '', avatar: 'https://i.imgur.com/tCsO8OV.png' },
+
+            { name: ' Pressa para ganhar dinheiro, calma para verificar a página. Inverta essa ordem. .', prize: '', avatar: 'https://i.imgur.com/tCsO8OV.png' },
+
+            { name: '', prize: '', avatar: 'https://i.imgur.com/tCsO8OV.png' },
+
+            { name: '.', prize: '', avatar: 'https://i.imgur.com/tCsO8OV.png' },
+
+        ];
+
+        
+
+        // ALTERAÇÃO FINAL: Embaralha a lista de ganhadores para que a ordem seja aleatória
+
+        fakeWinners.sort(() => 0.5 - Math.random());
+
+
+
+        tickerList.innerHTML = '';
+
+        fakeWinners.forEach(winner => {
+
+            const li = document.createElement('li');
+
+            li.className = 'ticker-item';
+
+            li.innerHTML = `<img src="${winner.avatar}" alt="Avatar"><p><strong>${winner.name}</strong>  <strong>${winner.prize}</strong></p>`;
+
+            tickerList.appendChild(li);
+
+        });
+
+        if (fakeWinners.length > 0) {
+
+            tickerList.innerHTML += tickerList.innerHTML;
+
+            tickerList.style.animationDuration = `${fakeWinners.length * 5}s`;
+
+        }
+
+    }
+
+
+
+    function switchSection(sectionId) {
+
+        const mainContainer = document.querySelector("main");
+
+        const currentActiveSection = document.querySelector(".content-section.active");
+
+        const newSection = sections[sectionId];
+
+        if (!newSection) return;
+
+        if (currentActiveSection) {
+
+            mainContainer.style.minHeight = `${currentActiveSection.offsetHeight}px`;
+
+            currentActiveSection.classList.add("exiting-left");
+
+            setTimeout(() => currentActiveSection.classList.remove("active"), 300);
+
+        }
+
+        newSection.classList.remove("entering-right", "exiting-left");
+
+        newSection.style.visibility = "visible";
+
+        newSection.classList.add("active");
+
+        setTimeout(() => {
+
+            mainContainer.style.minHeight = `${newSection.offsetHeight}px`;
+
+            window.scrollTo({ top: mainContainer.offsetTop - 75, behavior: "smooth" });
+
+        }, 50);
+
+    }
+
+
+
+    const startBtn = document.getElementById('start-btn');
+
+    if (startBtn) {
+
+        startBtn.addEventListener("click", () => {
+
+            clickSound.play();
+
+            startBtn.disabled = true;
+
+            const messages = ["Verificando...", "Carregando...", "Aguarde..."];
+
+            let msgIndex = 0;
+
+            startBtn.innerHTML = `<div class="spinner"></div><span>${messages[msgIndex]}</span>`;
+
+            const showNextMessage = () => {
+
+                msgIndex++;
+
+                if (msgIndex < messages.length) {
+
+                    if (startBtn.querySelector("span")) startBtn.querySelector("span").textContent = messages[msgIndex];
+
+                    setTimeout(showNextMessage, 1000);
+
+                } else {
+
+                    switchSection("quiz");
+
+                    showQuestion(0);
+
+                }
+
+            };
+
+            setTimeout(showNextMessage, 1000);
+
+        });
+
+    }
+
+    
+
+    let currentQuestionIndex = 0;
+
+    const questions = document.querySelectorAll(".question");
+
+    const nextButton = document.getElementById("next-question-btn");
+
+    const progressBar = document.getElementById("progress-bar-inner");
+
+    function showQuestion(index) { questions.forEach((q, i) => { q.style.display = i === index ? 'block' : 'none'; q.classList.toggle('active', i === index) }); }
+
+    function updateProgressBar() { if(progressBar) progressBar.style.width = `${(currentQuestionIndex / questions.length) * 100}%`; }
+
+    questions.forEach(q => q.querySelectorAll(".option").forEach(opt => opt.addEventListener("click", () => {
+
+        clickSound.play();
+
+        q.querySelectorAll(".option").forEach(o => o.classList.remove("selected"));
+
+        opt.classList.add("selected");
+
+        if (nextButton) nextButton.disabled = false;
+
+    })));
+
+    if (nextButton) nextButton.addEventListener("click", () => {
+
+        if (!questions[currentQuestionIndex]?.querySelector(".option.selected")) return;
+
+        clickSound.play();
+
+        currentQuestionIndex++;
+
+        updateProgressBar();
+
+        if (currentQuestionIndex < questions.length) {
+
+            showQuestion(currentQuestionIndex);
+
+            if (currentQuestionIndex === questions.length - 1) nextButton.innerText = "Revelar Prêmio";
+
+        } else {
+
+            if(progressBar) progressBar.style.width = '100%';
+
+            switchSection("scratch");
+
+            initScratchCard();
+
+        }
+
+        nextButton.disabled = true;
+
+    });
+
+
+
+    function initScratchCard() {
+
+        const prizeGrid = document.getElementById("prize-grid"), canvas = document.getElementById("scratch-canvas"), container = document.getElementById("scratch-container");
+
+        if (!prizeGrid || !canvas || !container) return;
+
+        const prizes = [finalPrize, finalPrize, finalPrize], fillers = ["R$10", ":(", "R$800", "R$1"];
+
+        for (let i = 0; i < 6; i++) prizes.push(fillers[Math.floor(Math.random() * fillers.length)]);
+
+        prizes.sort(() => 0.5 - Math.random());
+
+        prizeGrid.innerHTML = prizes.map(p => `<div class="prize-item">${p}</div>`).join("");
+
+        const ctx = canvas.getContext("2d", { willReadFrequently: true });
+
+        function resizeCanvas() {
+
+            canvas.width = container.clientWidth;
+
+            canvas.height = container.clientHeight;
+
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+
+            gradient.addColorStop(0, "#09433b");
+
+            gradient.addColorStop(1, "#09433b");
+
+            ctx.fillStyle = gradient;
+
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.globalCompositeOperation = "destination-out";
+
+        }
+
+        window.addEventListener("resize", resizeCanvas);
+
+        resizeCanvas();
+
+        let isDrawing = false, isRevealed = false;
+
+        const getCoords = (e) => ({ x: (e.clientX || e.touches[0].clientX) - canvas.getBoundingClientRect().left, y: (e.clientY || e.touches[0].clientY) - canvas.getBoundingClientRect().top });
+
+        const scratch = (e) => { if (!isDrawing || isRevealed) return; e.preventDefault(); const { x, y } = getCoords(e); ctx.beginPath(); ctx.arc(x, y, 25, 0, 2 * Math.PI, true); ctx.fill(); };
+
+        const startScratching = (e) => { isDrawing = true; scratchSound.play(); scratch(e); };
+
+        const stopScratching = () => { if (!isDrawing) return; isDrawing = false; scratchSound.stop(); checkReveal(); };
+
+        function checkReveal() {
+
+            if (isRevealed) return;
+
+            const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+
+            let transparent = 0;
+
+            for (let i = 3; i < data.length; i += 4) if (data[i] === 0) transparent++;
+
+            if (transparent / (canvas.width * canvas.height) > 0.6) {
+
+                isRevealed = true;
+
+                canvas.style.transition = "opacity 0.5s";
+
+                canvas.style.opacity = "0";
+
+                canvas.style.pointerEvents = "none";
+
+                setTimeout(() => showPrizeModal(finalPrize), 500);
+
+            }
+
+        }
+
+        ["mousedown", "touchstart"].forEach(evt => canvas.addEventListener(evt, startScratching));
+
+        ["mouseup", "touchend", "mouseleave"].forEach(evt => canvas.addEventListener(evt, stopScratching));
+
+        ["mousemove", "touchmove"].forEach(evt => canvas.addEventListener(evt, scratch));
+
+    }
+
+
+
+    function showPrizeModal(prize) {
+
+        const modal = document.getElementById('prize-modal');
+
+        if(modal) { modal.querySelector('#modal-prize-text').innerText = prize; modal.classList.add("visible"); }
+
+        if(canMakeConfetti && confettiCannon) fireConfetti();
+
+    }
+
+
+
+    function fireConfetti() {
+
+        successSound.play();
+
+        const end = Date.now() + 1500;
+
+        (function frame() {
+
+            confettiCannon({ particleCount: 2, angle: 60, spread: 60, origin: { x: 0 }, colors: ["#820AD1", "#FFFFFF", "#00B67A"] });
+
+            confettiCannon({ particleCount: 2, angle: 120, spread: 60, origin: { x: 1 }, colors: ["#820AD1", "#FFFFFF", "#00B67A"] });
+
+            if (Date.now() < end) requestAnimationFrame(frame);
+
+        }());
+
+    }
+
+
+
+    const claimBtn = document.getElementById('modal-claim-btn');
+
+    if(claimBtn) claimBtn.addEventListener("click", () => {
+
+        clickSound.play();
+
+        document.getElementById('prize-modal').classList.remove("visible");
+
+        switchSection("form");
+
+        const prizeDisplay = document.getElementById("prize-display");
+
+        if(prizeDisplay) prizeDisplay.innerText = `Prêmio a ser resgatado: ${finalPrize}`;
+
+    });
+
+
+
+    const pixForm = document.getElementById("pix-form");
+
+    if(pixForm) pixForm.addEventListener("submit", (e) => {
+
+        e.preventDefault();
+
+        clickSound.play();
+
+        const btn = e.target.querySelector(".main-button");
+
+        btn.disabled = true;
+
+        btn.innerHTML = `<div class="spinner"></div> Processando...`;
+
+        setTimeout(() => {
+
+            successSound.play();
+
+            pixForm.style.display = "none";
+
+            const prizeDisplay = document.getElementById("prize-display");
+
+            if(prizeDisplay) prizeDisplay.style.display = "none";
+
+            const successMsg = document.getElementById("success-message");
+
+            if(successMsg) successMsg.style.display = "block";
+
+        }, 2000);
+
+    });
+
+
+
+    initializeWinnersTicker();
+
+});
+
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W0ZZ1BGJCD"></script>
+
+<script>
+  
+  window.dataLayer = window.dataLayer || [];
+  
+  function gtag(){dataLayer.push(arguments);}
+  
+  gtag('js', new Date());
+  
+
+  
+  gtag('config', 'G-W0ZZ1BGJCD');
+  
+</script></body></html>  
